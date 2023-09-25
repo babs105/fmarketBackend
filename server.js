@@ -11,7 +11,8 @@ let DB = require("./db.config");
 /*****************************/
 /*** Initialisation de l'API */
 const app = express();
-
+// Use PORT provided in environment or default to 3000
+const port = process.env.SERVER_PORT || 3000;
 app.use(
   cors({
     origin: "*",
@@ -52,11 +53,7 @@ app.get("/", (req, res) => res.send(`I'm online. All is OK !`));
 
 app.use("/public", public_router);
 app.use("/private", checkAuthUserMiddleware, private_router);
-app.use(
-  "/admin",
-  checkAdminRoleMiddleware,
-  admin_router
-);
+app.use("/admin", checkAdminRoleMiddleware, admin_router);
 // app.use(
 //   "/roles",
 //   checkAuthUserMiddleware,
@@ -76,10 +73,8 @@ DB.sequelize
   .authenticate()
   .then(() => console.log("Database connection OK"))
   .then(() => {
-    app.listen(process.env.SERVER_PORT, () => {
-      console.log(
-        `This server is running on port ${process.env.SERVER_PORT}. Have fun !`
-      );
+    app.listen(port, "0.0.0.0", () => {
+      console.log(`This server is running on port ${port}. Have fun !`);
     });
   })
   .catch((err) => console.log("Database Error", err));
