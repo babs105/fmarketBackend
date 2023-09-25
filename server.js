@@ -11,6 +11,7 @@ let DB = require("./db.config");
 /*****************************/
 /*** Initialisation de l'API */
 const app = express();
+
 // Use PORT provided in environment or default to 3000
 const port = process.env.SERVER_PORT || 3000;
 app.use(
