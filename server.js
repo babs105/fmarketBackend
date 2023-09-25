@@ -13,7 +13,7 @@ let DB = require("./db.config");
 const app = express();
 
 // Use PORT provided in environment or default to 3000
-const port = process.env.SERVER_PORT || 3000;
+const port = process.env.PORT || 3000;
 // app.use(
 //   cors({
 //     origin: "*",
