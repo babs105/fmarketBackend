@@ -14,15 +14,15 @@ const app = express();
 
 // Use PORT provided in environment or default to 3000
 const port = process.env.SERVER_PORT || 3000;
-app.use(
-  cors({
-    origin: "*",
-    methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
-    allowedHeaders:
-      "Origin, X-Requested-With, x-access-token, role, Content, Accept, Content-Type, Authorization",
-  })
-);
-
+// app.use(
+//   cors({
+//     origin: "*",
+//     methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
+//     allowedHeaders:
+//       "Origin, X-Requested-With, x-access-token, role, Content, Accept, Content-Type, Authorization",
+//   })
+// );
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
