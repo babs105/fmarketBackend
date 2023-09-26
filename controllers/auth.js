@@ -68,7 +68,7 @@ exports.login = async (req, res) => {
     });
   } catch (err) {
     if (err.name == "SequelizeDatabaseError") {
-      res.status(500).json({ message: "Database Error", error: err });
+      res.status(500).json({ message: "Databas Error", error: err });
     }
     res.status(500).json({ message: "Login process failed", error: err });
   }
